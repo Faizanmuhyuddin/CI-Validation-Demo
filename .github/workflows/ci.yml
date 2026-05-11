@@ -1,0 +1,28 @@
+name: CI Pipeline
+
+on:
+  push:
+
+jobs:
+  test-project:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Download Code
+      uses: actions/checkout@v3
+
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Install pytest
+      run: pip install pytest
+
+    - name: Run Test
+      run: pytest test_app.py
+
+    - name: Generate Report
+      run: echo "Validation Complete"
